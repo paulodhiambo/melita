@@ -1,8 +1,8 @@
-package io.transaction.config.config;
+package io.melita.config.config;
 
 import lombok.RequiredArgsConstructor;
-import io.transaction.config.domain.PropertySourceEntity;
-import io.transaction.config.repository.PropertySourceRepository;
+import io.melita.config.domain.PropertySourceEntity;
+import io.melita.config.repository.PropertySourceRepository;
 import org.springframework.cloud.config.environment.Environment;
 import org.springframework.cloud.config.environment.PropertySource;
 import org.springframework.cloud.config.server.environment.EnvironmentRepository;

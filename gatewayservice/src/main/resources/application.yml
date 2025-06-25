@@ -1,24 +1,42 @@
-eureka:
-  client:
-    register-with-eureka: false
-
 server:
   port: 8222
+
 spring:
   application:
     name: gateway
+
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: your_github_client_id
+            client-secret: your_github_client_secret
+            scope: read:user
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            client-name: GitHub
+        provider:
+          github:
+            authorization-uri: https://github.com/login/oauth/authorize
+            token-uri: https://github.com/login/oauth/access_token
+            user-info-uri: https://api.github.com/user
+
   cloud:
     gateway:
       discovery:
         locator:
           enabled: true
+          lower-case-service-id: true  # standardizes service ID case
+
       routes:
-        - id: TransactionAdapterService
-          uri:
+        - id: orderservice
+          uri: lb://orderservice
+          predicates:
+            - Path=/api/v1/orders/**
 
-        - id: TransactionAtomicService
-          uri:
-
-        - id: TransactionAuthenticationService
-          uri:
-
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka

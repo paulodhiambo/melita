@@ -1,4 +1,4 @@
-package io.transaction.config.domain;
+package io.melita.config.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;

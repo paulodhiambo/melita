@@ -12,6 +12,7 @@ import io.melita.orderservice.repository.OrderRepository;
 import io.melita.orderservice.services.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.kafka.clients.producer.RecordMetadata;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -64,7 +65,7 @@ public class OrderServiceImpl implements OrderService {
                     .map(p -> ProductOrder.builder()
                             .productType(p.getProductType())
                             .packageName(p.getPackageName())
-                            .order(order) // maintain bidirectional relationship
+                            .order(order)
                             .build())
                     .toList();
 
@@ -74,13 +75,18 @@ public class OrderServiceImpl implements OrderService {
             log.info("Order persisted successfully. OrderId: {}", savedOrder.getId());
 
             String orderJson = objectMapper.writeValueAsString(request);
-            kafkaTemplate.send(orderTopic, orderJson).addCallback(
-                result -> log.info("Order event published to Kafka. CorrelationId: {}, Partition: {}, Offset: {}",
-                        correlationId,
-                        result.getRecordMetadata().partition(),
-                        result.getRecordMetadata().offset()),
-                ex -> log.error("Failed to publish order event to Kafka. CorrelationId: {}", correlationId, ex)
-            );
+            kafkaTemplate.send(orderTopic, orderJson)
+                    .thenAccept(result -> {
+                        RecordMetadata metadata = result.getRecordMetadata();
+                        log.info("✅ Order event published to Kafka. CorrelationId: {}, Partition: {}, Offset: {}",
+                                correlationId,
+                                metadata.partition(),
+                                metadata.offset());
+                    })
+                    .exceptionally(ex -> {
+                        log.error("❌ Failed to publish order event to Kafka. CorrelationId: {}", correlationId, ex);
+                        return null;
+                    });
 
             return BaseResponse.builder()
                     .messageId(correlationId)
