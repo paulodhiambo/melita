@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://gstream.ccx6esg8q79p.us-east-1.rds.amazonaws.com:5432/config
+    username: postgres
+    password: fwX8fdv34NFMl0Kw
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

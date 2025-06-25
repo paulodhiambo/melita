@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: transaction-config
+spec:
+  selector:
+    app: transaction-config
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer

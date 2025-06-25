@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transaction-config
+  labels:
+    app: transaction-config
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: transaction-config
+  template:
+    metadata:
+      labels:
+        app: transaction-config
+    spec:
+      containers:
+        - name: transaction-adapter
+          image: paulodhiambo/transactionconfig:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          imagePullPolicy: Always

@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: "TransactionConfigService"
+  profiles:
+    active: dev
+
+server:
+  port: 8080
+
+####
