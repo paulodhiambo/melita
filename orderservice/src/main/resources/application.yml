@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: orderservice
+  kafka:
+    bootstrap-servers: 159.89.225.129:9092
+    order-topic: "order.created"
