@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "65b20367-c8a5-4f05-8e40-1aba49e79f39",
+		"name": "Melita Order Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7775185"
+	},
+	"item": [
+		{
+			"name": "Make Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"messageId\": \"abc123\",\r\n  \"data\": {\r\n    \"customer\": {\r\n      \"firstName\": \"Jane\",\r\n      \"lastName\": \"Doe\",\r\n      \"email\": \"jane.doe@example.com\",\r\n      \"phone\": \"+35698765432\"\r\n    },\r\n    \"installationAddress\": {\r\n      \"street\": \"123 Main Street\",\r\n      \"city\": \"Valletta\",\r\n      \"postalCode\": \"VLT1111\"\r\n    },\r\n    \"installationSlot\": {\r\n      \"date\": \"2025-07-01\",\r\n      \"timeSlot\": \"10:00-12:00\"\r\n    },\r\n    \"products\": [\r\n      {\r\n        \"productType\": \"Internet\",\r\n        \"packageName\": \"1Gbps\"\r\n      },\r\n      {\r\n        \"productType\": \"TV\",\r\n        \"packageName\": \"140 Channels\"\r\n      }\r\n    ]\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8888/api/v1/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"v1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Order",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/api/v1/orders/:orderId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"v1",
+						"orders",
+						":orderId"
+					],
+					"variable": [
+						{
+							"key": "orderId",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -3,6 +3,11 @@
 A secure, scalable, event-driven microservice for capturing and processing customer orders submitted via 3rd-party systems (e.g., ERP). Supports products like Internet, TV, Telephony, and Mobile.
 
 ---
+### Architecture
+
+![Architecture](media/architecture.png)
+
+---
 
 ### 🚀 Features
 
@@ -95,7 +100,7 @@ A secure, scalable, event-driven microservice for capturing and processing custo
 A Postman collection is included under:
 
 ```
-postman/Melita-Order-API.postman_collection.json
+postman/Melita Order Service.postman_collection.json
 ```
 
 ---
@@ -129,41 +134,6 @@ spring:
 
 ```bash
 ./mvnw spring-boot:run
-```
-
----
-
-### 🐳 Docker Compose (Optional)
-
-A `docker-compose.yml` file is available to spin up:
-
-* Kafka
-* PostgreSQL
-* Spring Cloud Config Server
-
----
-
-### 📁 Directory Structure
-
-```
-.
-├── config/                 # External configuration repo (Spring Cloud)
-├── postman/                # Postman test collections
-├── src/
-│   ├── main/
-│   │   ├── java/io/melita/orderservice/
-│   │   │   ├── controller/
-│   │   │   ├── services/
-│   │   │   ├── entities/
-│   │   │   ├── models/
-│   │   │   ├── repository/
-│   │   │   └── events/
-│   │   └── resources/
-│   └── test/
-├── Dockerfile
-├── docker-compose.yml
-├── pom.xml
-└── README.md
 ```
 
 ---

@@ -22,6 +22,10 @@ spring:
             user-info-uri: https://api.github.com/user
 
   cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: true
+
     gateway:
       discovery:
         locator:
