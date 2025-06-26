@@ -22,16 +22,16 @@ A secure, scalable, event-driven microservice for capturing and processing custo
 
 ### 🧰 Tech Stack
 
-| Layer             | Technology                         |
-| ----------------- | ---------------------------------- |
-| Framework         | Spring Boot (3.5.3)                |
-| Messaging         | Kafka                              |
-| Auth              | Spring Security + JWT              |
-| Config Management | Spring Cloud Config                |
-| Persistence       | Spring Data JPA + PostgreSQL.      |
-| JSON Mapping      | Jackson (ObjectMapper)             |
-| Testing           | JUnit 5 + Mockito + Postman        |
-| Build Tool        | Maven / Gradle                     |
+| Layer             | Technology                    |
+| ----------------- |-------------------------------|
+| Framework         | Spring Boot (3.5.3)           |
+| Messaging         | Kafka                         |
+| Auth              | Spring Security + Oauth       |
+| Config Management | Spring Cloud Config           |
+| Persistence       | Spring Data JPA + PostgreSQL. |
+| JSON Mapping      | Jackson (ObjectMapper)        |
+| Testing           | JUnit 5 + Mockito + Postman   |
+| Build Tool        | Maven / Gradle                |
 
 ---
 
