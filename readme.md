@@ -12,7 +12,7 @@ A secure, scalable, event-driven microservice for capturing and processing custo
 ### 🚀 Features
 
 * ✅ Public **RESTful API** to accept customer orders
-* 🔐 **JWT-secured** endpoints for 3rd-party integrations
+* 🔐 **Oauth2-secured** endpoints for 3rd-party integrations
 * ⚙️ Order validation, persistence, and event publishing
 * 📨 **Kafka**-based asynchronous messaging to Fulfilment and Care systems
 * ☁️ Externalized configuration via **Spring Cloud Config**
